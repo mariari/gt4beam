@@ -1,5 +1,5 @@
 Class {
-	#name : #BeamLinkCommand,
+	#name : #ElixirLinkCommand,
 	#superclass : #LanguageLinkCommand,
 	#category : #'Gt4beam-Execution'
 }
