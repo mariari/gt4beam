@@ -18,3 +18,8 @@ BeamLinkApplication >> initializeHandlers [
 	communicationHandler := PBCommunicationHandler application: self.
 	executionHandler := ElixirExecutionHandler application: self
 ]
+
+{ #category : #directory }
+BeamLinkApplication >> workingDirectory [
+	^ self settings workingDirectory
+]
