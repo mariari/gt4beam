@@ -6,11 +6,14 @@ Class {
 
 { #category : #accessing }
 ElixirLinkCommand >> codeForRemote [
-	"I'm not sure if the commands coming in are strings or actual data... I assume data for now"
+	"For Now we shall use the py3CodeStream, this isn't ideal but we should make our own later"
 
 	| codeStream |
 	codeStream := String new writeStream.
-	self instructions do: [ :instr | codeStream << instr printString << String lf ].
+	self instructions
+		do: [ :instr | 
+			instr writePython3On: codeStream.
+			codeStream << String lf ].
 	^ codeStream contents
 ]
 
