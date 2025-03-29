@@ -62,7 +62,23 @@ BeamLinkBeamProcess >> processArguments [
 { #category : #'start-stop' }
 BeamLinkBeamProcess >> start [
 	process := self newProcess.
-	process run
+	process run.
+	process stdinStream
+		nextPutAll: 'Elixir.Logger.configure(level: :debug)';
+		lf.
+	self startTCPAt: self application settings serverSocketAddress port asString
+]
+
+{ #category : #tcp }
+BeamLinkBeamProcess >> startTCPAt: socket [
+	process stdinStream
+		nextPutAll: (String
+				streamContents: [ :stream | 
+					stream
+						nextPutAll: 'GtBridge.start_listener(';
+						nextPutAll: socket asString;
+						nextPut: $);
+						lf ])
 ]
 
 { #category : #'start-stop' }

@@ -44,3 +44,8 @@ BeamPlatform >> ensureEnvironmentForApp: anApplication [
 BeamPlatform >> folderForApplication [
 	^ FileLocator imageDirectory / 'beam'
 ]
+
+{ #category : #utils }
+BeamPlatform >> newRandomName [
+	^ 'beam' , UUID new asString36
+]
