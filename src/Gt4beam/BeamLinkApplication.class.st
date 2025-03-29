@@ -15,7 +15,7 @@ BeamLinkApplication class >> start [
 BeamLinkApplication >> initializeHandlers [
 	loggingHandler := LanguageLinkLoggingHandler application: self.
 	processHandler := LanguageLinkServerHandler application: self.
-	communicationHandler := PBCommunicationHandler application: self.
+	communicationHandler := LanguageLinkCommunicationHandler application: self.
 	executionHandler := ElixirExecutionHandler application: self
 ]
 
