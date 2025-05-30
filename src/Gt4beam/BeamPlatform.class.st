@@ -14,7 +14,7 @@ BeamPlatform >> ensureEnvironmentForApp: anApplication [
 	| proc repo iceRepository error |
 	(anApplication workingDirectory exists
 		and: [ (anApplication workingDirectory / 'mix.exs') exists ])
-		ifFalse: [ [ anApplication workingDirectory createDirectory.	"TODO: See what has to change on Windows"
+		ifFalse: [ [ anApplication workingDirectory ensureDelete.	"TODO: See what has to change on Windows"
 
 			repo := GtIceRepositorySwitcher new
 					sshUrl: 'git@github.com:mariari/ElixirGtBridge.git';
@@ -37,7 +37,9 @@ BeamPlatform >> ensureEnvironmentForApp: anApplication [
 							messageText: 'Unable to fetch dependencies for the bridge';
 							application: anApplication;
 							process: proc.
-					error signal ] ] asJob title: 'Cloning the ElixirBridge Environment' ]
+					error signal ] ] asJob
+				title: 'Cloning the ElixirBridge Environment';
+				run ]
 ]
 
 { #category : #accessing }
