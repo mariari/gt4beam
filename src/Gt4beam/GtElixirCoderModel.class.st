@@ -30,30 +30,15 @@ GtElixirCoderModel >> bindAndExecute: sourceString [
 
 	<gtIgnoreConstraint: #GtRBAcceptVisitorCalledFromNonVisitingMethods>
 	<remoteDebuggerSignal>
-	| res trimmedSource ast varNames lastStatement carpSource |
+	| res trimmedSource parsed last |
 	trimmedSource := SmaCCString on: sourceString trimRight.
-	ast := ElixirParser parse: trimmedSource.
-	"The variables to be returned are names that are in pharoBindings"
-	varNames := pharoBindings
-			ifNil: [ Set new ]
-			ifNotNil: [ pharoBindings bindingNames asSet ].	"Assign the final statement to snippetResult"
-	"lastStatement := ast expressions last."
-	"trimmedSource
-		insert: '(defdynamic snippetResult '
-		at: lastStatement startPosition.
-	trimmedSource insert: ')' at: lastStatement stopPosition.
-	varNames add: 'snippetResult'."
-	carpSource := self
-			sourceFrom: trimmedSource asString
-			returnedVarNames: varNames.
-	res := self bindAndExecuteRaw: sourceString.
+	parsed := ElixirParser parse: trimmedSource.
+	last := parsed expressions expressions last.
+	trimmedSource insert: ', command_id, port)' at: last stopPosition + 1.
+	trimmedSource insert: 'Eval.notify(' at: last startPosition.
+	res := self bindAndExecuteRaw: trimmedSource asString.
 
-	(res at: #result) = 'success' ifTrue: [ ^ res ].
-	exception := PharoLinkRemoteError new
-			application: application;
-			command: commandFactory command;
-			trace: (res at: #value).
-	exception signal
+	^ res
 ]
 
 { #category : #accessing }
@@ -138,8 +123,7 @@ GtElixirCoderModel >> pharoBindings: anObject [
 
 { #category : #accessing }
 GtElixirCoderModel >> primitiveEvaluate: aSourceString inContext: aGtSourceCoderEvaluationContext onFailDo: anEvaluationFailBlock [
-	^ (self bindAndExecute: aSourceString) parse
-		transformValue: [ :aValue | aValue expressions first toPharo ]
+	^ self bindAndExecute: aSourceString
 ]
 
 { #category : #accessing }
