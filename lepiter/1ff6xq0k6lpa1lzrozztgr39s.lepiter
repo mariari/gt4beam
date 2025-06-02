@@ -66,7 +66,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-05-30T15:34:06.964544+02:00"
+						"dateAndTimeString" : "2025-06-01T00:30:20.646541+08:00"
 					}
 				},
 				"uid" : {
@@ -146,7 +146,8 @@
 				},
 				"code" : "[123, \"hello\", %{key: \"world\"}]",
 				"contentString" : "[123, \"hello\", %{key: \"world\"}]",
-				"bindingName" : "world"
+				"bindingName" : "world",
+				"format" : "ElixirParser"
 			},
 			{
 				"__type" : "pharoSnippet",
