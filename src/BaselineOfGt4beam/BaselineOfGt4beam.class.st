@@ -14,7 +14,8 @@ BaselineOfGt4beam class >> loadLepiter [
 			defaultDatabase := LeDatabasesRegistry defaultLogicalDatabase.
 			currentProperties := defaultDatabase properties.
 			currentProperties addRegisteredDirectory: aRepository repositoryDirectory / 'lepiter'.
-			defaultDatabase reload ]
+			"used to ensure that elixir snippets are loaded correctly"
+			LeLogicalDatabase allInstancesDo: #fullReload ]
 		ifNone: [
 			self inform: 'Repository not found.' ]
 ]
