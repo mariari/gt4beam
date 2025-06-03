@@ -30,3 +30,8 @@ ElixirExecutionHandler >> registerObject: aProxyObject [
 							variable: aProxyObject elixirVar
 							executionHandler: self)
 ]
+
+{ #category : #'as yet unclassified' }
+ElixirExecutionHandler >> removeId: aRemoteProxyId [
+	^ 'Eval.remove(' , aRemoteProxyId asString , ')'
+]
