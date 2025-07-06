@@ -1,10 +1,10 @@
 Class {
-	#name : #BeamMapObject,
+	#name : #BeamListObject,
 	#superclass : #BeamProxyObject,
 	#category : #'Gt4beam-Serialization'
 }
 
 { #category : #'as yet unclassified' }
-BeamMapObject class >> elixirClass [
-	^ 'Map'
+BeamListObject class >> elixirClass [
+	^ 'List'
 ]

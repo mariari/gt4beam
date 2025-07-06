@@ -1,10 +1,10 @@
 Class {
-	#name : #BeamMapObject,
+	#name : #BeamBoolObject,
 	#superclass : #BeamProxyObject,
 	#category : #'Gt4beam-Serialization'
 }
 
 { #category : #'as yet unclassified' }
-BeamMapObject class >> elixirClass [
-	^ 'Map'
+BeamBoolObject class >> elixirClass [
+	^ 'Boolean'
 ]

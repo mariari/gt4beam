@@ -55,6 +55,16 @@ BeamProxyObject >> elixirVar: anObject [
 	elixirVar := anObject
 ]
 
+{ #category : #'as yet unclassified' }
+BeamProxyObject >> gtLiveFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Live';
+		priority: 5;
+		object: [ self value ];
+		view: #gtLiveFor:
+]
+
 { #category : #accessing }
 BeamProxyObject >> rawData [
 	^ rawData
