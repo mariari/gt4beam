@@ -66,7 +66,23 @@ BeamLinkBeamProcess >> start [
 	process stdinStream
 		nextPutAll: 'Elixir.Logger.configure(level: :debug)';
 		lf.
-	self startTCPAt: self application settings serverSocketAddress port asString
+	self
+		startHTTPAt: self application settings serverSocketAddress port asString
+		andClient: self application settings clientSocketAddress port asString
+]
+
+{ #category : #http }
+BeamLinkBeamProcess >> startHTTPAt: server andClient: client [
+	process stdinStream
+		nextPutAll: (String
+				streamContents: [ :stream | 
+					stream
+						nextPutAll: 'GtBridge.Http.Supervisor.start_listener(';
+						nextPutAll: server;
+						nextPut: $,;
+						nextPutAll: client;
+						nextPut: $);
+						lf ])
 ]
 
 { #category : #tcp }
