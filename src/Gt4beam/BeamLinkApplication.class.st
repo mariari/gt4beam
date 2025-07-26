@@ -4,6 +4,23 @@ Class {
 	#category : #'Gt4beam-Global'
 }
 
+{ #category : #accessing }
+BeamLinkApplication class >> connectwithServerPort: server clientPort: cleint [
+	^ self
+		startWith: (LanguageLinkSettings new
+				clientSocketAddress: (LanguageLinkSocketAddress ipOrName: 'localhost' port: cleint);
+				serverSocketAddress: (LanguageLinkSocketAddress ipOrName: 'localhost' port: server);
+				messageBrokerStrategy: LanguageLinkHttpMessageBroker;
+				serverProcessClass: BeamLinkBeamProcess;
+				platform: BeamPlatform new;
+				commandFactoryClass: BeamLinkCommandFactory;
+				commandClass: ElixirLinkCommand;
+				serializerClass: LanguageLinkSerializer;
+				deserializerClass: BeamLinkDeserializer;
+				parserClass: ElixirParser;
+				yourself)
+]
+
 { #category : #'start - stop' }
 BeamLinkApplication class >> start [
 	"We use startWith: however I need to override that to allow multiple toggleable instances"
