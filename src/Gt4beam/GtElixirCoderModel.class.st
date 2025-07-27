@@ -20,8 +20,7 @@ GtElixirCoderModel class >> code: aString [
 
 { #category : #converting }
 GtElixirCoderModel >> asCoderViewModel [
-
-	^ GtSourceCoderViewModel new coder: self
+	^ GtElixirSnippetCoderViewModel new coder: self
 ]
 
 { #category : #accessing }
