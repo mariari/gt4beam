@@ -6,5 +6,5 @@ Class {
 
 { #category : #accessing }
 GtElixirSnippetCoderViewModel >> newCompletionStrategy [
-	^ GtElixirCompletionStrategy
+	^ GtElixirCompletionStrategy new
 ]
