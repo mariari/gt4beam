@@ -14,7 +14,7 @@ BeamLinkDeserializer >> buildProxyFor: rawObject [
 	| proxy |
 	proxy := (BeamProxyObject elixirClass: (rawObject at: #exclass))
 			elixirVar: (rawObject at: #exid);
-			value: (STONJSON fromString: (rawObject at: #value));
+			value: (rawObject at: #value);
 			rawData: rawObject;
 			application: self application.
 	self executionHandler registerObject: proxy.
