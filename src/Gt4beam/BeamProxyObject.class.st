@@ -35,6 +35,23 @@ BeamProxyObject >> application: anObject [
 	application := anObject
 ]
 
+{ #category : #'as yet unclassified' }
+BeamProxyObject >> asList [
+	^ (1 to: self length) collect: [ :anIndex | self itemAt: anIndex - 1 ]
+]
+
+{ #category : #'as yet unclassified' }
+BeamProxyObject >> attributeAt: name [
+	^ self
+		evaluateAndWait: 'GtBridge.ObjectRegistry.get_attribute(' , self elixirVar asString , ', :', name, ')'
+]
+
+{ #category : #'as yet unclassified' }
+BeamProxyObject >> attributes [
+	^ self
+		evaluateAndWait: 'GtBridge.ObjectRegistry.list_attributes(' , self elixirVar asString , ')'
+]
+
 { #category : #accessing }
 BeamProxyObject >> elixirClass [
 	^ elixirClass
@@ -56,6 +73,26 @@ BeamProxyObject >> elixirVar: anObject [
 ]
 
 { #category : #'as yet unclassified' }
+BeamProxyObject >> evaluateAndWait: string [
+	^ self application newCommandFactory
+		<< string;
+		sendAndWait
+]
+
+{ #category : #'as yet unclassified' }
+BeamProxyObject >> gtElixirRawFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Elixir raw';
+		priority: 99;
+		items: [ self attributes asList ];
+		column: 'Variable' text: #yourself;
+		column: 'Value' text: [ :aName | self attributeAt: aName ];
+		send: [ :aName | self attributeAt: aName ];
+		actionUpdateButton
+]
+
+{ #category : #'as yet unclassified' }
 BeamProxyObject >> gtLiveFor: aView [
 	<gtView>
 	^ aView forward
@@ -73,7 +110,19 @@ BeamProxyObject >> gtRemoteViewsFor: aView [
 	^ aView composite
 		title: 'Remote views';
 		priority: 1;
-		views: (self viewDeclarations value collect: [ :decl | self viewFromDeclaration: decl ])
+		views: (self viewDeclarations asList collect: [ :decl | self viewFromDeclaration: decl ])
+]
+
+{ #category : #'as yet unclassified' }
+BeamProxyObject >> itemAt: idx [
+	^ self
+		evaluateAndWait: 'GtBridge.ObjectRegistry.get_item(' , self elixirVar asString , ', ', idx asString , ')'
+]
+
+{ #category : #'as yet unclassified' }
+BeamProxyObject >> length [
+	^ self
+		evaluateAndWait: 'GtBridge.ObjectRegistry.get_length(' , self elixirVar asString , ')'
 ]
 
 { #category : #accessing }
@@ -86,65 +135,14 @@ BeamProxyObject >> rawData: anObject [
 	rawData := anObject
 ]
 
-{ #category : #accessing }
-BeamProxyObject >> value [
-	^ value
-]
-
-{ #category : #accessing }
-BeamProxyObject >> value: anObject [
-	value := anObject
-]
-
 { #category : #'as yet unclassified' }
 BeamProxyObject >> viewDeclarations [
-	^ self application newCommandFactory
-		<< ('GtBridge.GtViewedObject.getViewsDeclarationsById(' , self elixirVar asString , ')');
-		sendAndWait
+	^ self
+		evaluateAndWait: 'GtBridge.GtViewedObject.getViewsDeclarationsById(' , self elixirVar asString
+				, ')'
 ]
 
 { #category : #'as yet unclassified' }
 BeamProxyObject >> viewFromDeclaration: aDeclaration [
-	| viewName |
-	viewName := aDeclaration at: #viewName.
-
-	viewName = 'GtPhlowListViewSpecification'
-		ifTrue: [ ^ GtPhlowView empty list
-				title: (aDeclaration at: #title);
-				priority: (aDeclaration at: #priority);
-				items: [ aDeclaration at: #items ] ].
-
-	viewName = 'GtPhlowTextEditorViewSpecification'
-		ifTrue: [ ^ GtPhlowView empty textEditor
-				title: (aDeclaration at: #title);
-				priority: (aDeclaration at: #priority);
-				text: [ aDeclaration at: #string ] ].
-
-	viewName = 'GtPhlowColumnedListViewSpecification'
-		ifTrue: [ | view |
-			view := GtPhlowView empty columnedList
-					title: (aDeclaration at: #title);
-					priority: (aDeclaration at: #priority);
-					items: [ aDeclaration at: #items ].
-
-			(aDeclaration at: #columns)
-				withIndexDo: [ :aColumn :anIndex | view column: (aColumn at: #title) text: [ :item | item at: anIndex ] ].
-
-			^ view ].
-
-	viewName = 'GtPhlowColumnedTreeViewSpecification'
-		ifTrue: [ | view |
-			aDeclaration inspect.
-			view := GtPhlowView empty columnedTree
-					title: (aDeclaration at: #title);
-					priority: (aDeclaration at: #priority);
-					items: [ aDeclaration at: #items ];
-					children: [ :anItem | anItem at: #children ].
-
-			(aDeclaration at: #columns)
-				withIndexDo: [ :aColumn :anIndex | view column: (aColumn at: #title) text: [ :item | item at: #values at: anIndex ] ].
-
-			^ view ].
-
-	^ self error: 'Unknown view'
+	^ (GtBeamViewDeclaration fromRawData: aDeclaration) asView
 ]

@@ -10,7 +10,9 @@ Class {
 { #category : #'as yet unclassified' }
 GtBeamViewDeclaration class >> fromRawData: aData [
 	self
-		allSubclassesDo: [ :aSubclass | aSubclass remoteName = aData ifTrue: [ ^ aSubclass new rawData: aData ] ].
+		allSubclassesDo: [ :aSubclass | 
+			aSubclass remoteName = (aData at: #viewName)
+				ifTrue: [ ^ aSubclass new rawData: aData ] ].
 
 	^ self error: 'Unknown view'
 ]
