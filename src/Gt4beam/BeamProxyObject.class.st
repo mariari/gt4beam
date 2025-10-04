@@ -25,26 +25,6 @@ BeamProxyObject class >> elixirClass: aClass [
 	^ proxyClass new elixirClass: aClass
 ]
 
-{ #category : #'as yet unclassified' }
-BeamProxyObject >> addViewFromDeclaration: aDeclaration to: aCompositeView [
-	| viewName |
-	viewName := aDeclaration at: #viewName.
-
-	viewName = 'GtPhlowListViewSpecification'
-		ifTrue: [ ^ aCompositeView list
-				title: (aDeclaration at: #title);
-				priority: (aDeclaration at: #priority);
-				items: [ aDeclaration at: #items ] ].
-
-	viewName = 'GtPhlowTextEditorViewSpecification'
-		ifTrue: [ ^ aCompositeView textEditor
-				title: (aDeclaration at: #title);
-				priority: (aDeclaration at: #priority);
-				text: [ aDeclaration at: #string ] ].
-
-	^ aCompositeView
-]
-
 { #category : #accessing }
 BeamProxyObject >> application [
 	^ application
@@ -87,14 +67,13 @@ BeamProxyObject >> gtLiveFor: aView [
 
 { #category : #'as yet unclassified' }
 BeamProxyObject >> gtRemoteViewsFor: aView [
+	"Create a composite view with all remote views"
+
 	<gtView>
-	| viewDeclarations |
-	"Get view declarations from the remote side"
-	viewDeclarations := self application
-			sendAndWait: 'GtBridge.GtViewedObject.getViewsDeclarations(' , self elixirVar , ')'.	"Create a composite view with all remote views"
-	^ viewDeclarations
-		inject: aView composite
-		into: [ :composite :eachDecl | self addViewFromDeclaration: eachDecl to: composite ]
+	^ aView composite
+		title: 'Remote views';
+		priority: 1;
+		views: (self viewDeclarations value collect: [ :decl | self viewFromDeclaration: decl ])
 ]
 
 { #category : #accessing }
@@ -115,4 +94,31 @@ BeamProxyObject >> value [
 { #category : #accessing }
 BeamProxyObject >> value: anObject [
 	value := anObject
+]
+
+{ #category : #'as yet unclassified' }
+BeamProxyObject >> viewDeclarations [
+	^ self application newCommandFactory
+		<< ('GtBridge.GtViewedObject.getViewsDeclarationsById(' , self elixirVar asString , ')');
+		sendAndWait
+]
+
+{ #category : #'as yet unclassified' }
+BeamProxyObject >> viewFromDeclaration: aDeclaration [
+	| viewName |
+	viewName := aDeclaration at: #viewName.
+
+	viewName = 'GtPhlowListViewSpecification'
+		ifTrue: [ ^ GtPhlowView empty list
+				title: (aDeclaration at: #title);
+				priority: (aDeclaration at: #priority);
+				items: [ aDeclaration at: #items ] ].
+
+	viewName = 'GtPhlowTextEditorViewSpecification'
+		ifTrue: [ ^ GtPhlowView empty textEditor
+				title: (aDeclaration at: #title);
+				priority: (aDeclaration at: #priority);
+				text: [ aDeclaration at: #string ] ].
+
+	^ self error: 'Unknown view'
 ]
