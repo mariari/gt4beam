@@ -120,5 +120,30 @@ BeamProxyObject >> viewFromDeclaration: aDeclaration [
 				priority: (aDeclaration at: #priority);
 				text: [ aDeclaration at: #string ] ].
 
+	viewName = 'GtPhlowColumnedListViewSpecification'
+		ifTrue: [ | view |
+			view := GtPhlowView empty columnedList
+					title: (aDeclaration at: #title);
+					priority: (aDeclaration at: #priority);
+					items: [ aDeclaration at: #items ].
+
+			(aDeclaration at: #columns)
+				withIndexDo: [ :aColumn :anIndex | view column: (aColumn at: #title) text: [ :item | item at: anIndex ] ].
+
+			^ view ].
+
+	viewName = 'GtPhlowColumnedTreeViewSpecification'
+		ifTrue: [ | view |
+		aDeclaration inspect.
+			view := GtPhlowView empty columnedTree
+					title: (aDeclaration at: #title);
+					priority: (aDeclaration at: #priority);
+					items: [ aDeclaration at: #items ].
+
+			(aDeclaration at: #columns)
+				withIndexDo: [ :aColumn :anIndex | view column: (aColumn at: #title) text: [ :item | item at: anIndex ] ].
+
+			^ view ].
+
 	^ self error: 'Unknown view'
 ]
