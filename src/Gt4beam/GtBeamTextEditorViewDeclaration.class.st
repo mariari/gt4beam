@@ -1,0 +1,20 @@
+Class {
+	#name : #GtBeamTextEditorViewDeclaration,
+	#superclass : #GtBeamViewDeclaration,
+	#category : #'Gt4beam-Serialization'
+}
+
+{ #category : #'as yet unclassified' }
+GtBeamTextEditorViewDeclaration class >> remoteName [
+	^ 'GtPhlowTextEditorViewSpecification'
+]
+
+{ #category : #'as yet unclassified' }
+GtBeamTextEditorViewDeclaration >> treatView: view [
+view  text: [ self rawData at: #string ]
+]
+
+{ #category : #'as yet unclassified' }
+GtBeamTextEditorViewDeclaration >> viewName [
+	^ #textEditor
+]

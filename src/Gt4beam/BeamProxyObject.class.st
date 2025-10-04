@@ -134,14 +134,15 @@ BeamProxyObject >> viewFromDeclaration: aDeclaration [
 
 	viewName = 'GtPhlowColumnedTreeViewSpecification'
 		ifTrue: [ | view |
-		aDeclaration inspect.
+			aDeclaration inspect.
 			view := GtPhlowView empty columnedTree
 					title: (aDeclaration at: #title);
 					priority: (aDeclaration at: #priority);
-					items: [ aDeclaration at: #items ].
+					items: [ aDeclaration at: #items ];
+					children: [ :anItem | anItem at: #children ].
 
 			(aDeclaration at: #columns)
-				withIndexDo: [ :aColumn :anIndex | view column: (aColumn at: #title) text: [ :item | item at: anIndex ] ].
+				withIndexDo: [ :aColumn :anIndex | view column: (aColumn at: #title) text: [ :item | item at: #values at: anIndex ] ].
 
 			^ view ].
 
