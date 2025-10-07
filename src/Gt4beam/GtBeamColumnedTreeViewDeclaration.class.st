@@ -12,11 +12,11 @@ GtBeamColumnedTreeViewDeclaration class >> remoteName [
 { #category : #'as yet unclassified' }
 GtBeamColumnedTreeViewDeclaration >> treatView: view [
 	view
-		items: [ self rawData at: #items ];
-		children: [ :item | item at: #children ].
+		items: [ (self rawData attributeAt: #items) asList ];
+		children: [ :item | (item attributeAt: #children) asList ].
 
-	(self rawData at: #columns)
-		withIndexDo: [ :aColumn :anIndex | view column: (aColumn at: #title) text: [ :item | item at: #values at: anIndex ] ]
+	(self rawData attributeAt: #columns) asList
+		withIndexDo: [ :aColumn :anIndex | view column: (aColumn attributeAt: #title) text: [ :item | (item attributeAt: #values) asList at: anIndex ] ]
 ]
 
 { #category : #'as yet unclassified' }

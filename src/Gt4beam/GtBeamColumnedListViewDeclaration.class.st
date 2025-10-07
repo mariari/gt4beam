@@ -11,10 +11,10 @@ GtBeamColumnedListViewDeclaration class >> remoteName [
 
 { #category : #'as yet unclassified' }
 GtBeamColumnedListViewDeclaration >> treatView: view [
-	view items: [ self rawData at: #items ].
+	view items: [ (self rawData attributeAt: #items) asList ].
 
-	(self rawData at: #columns)
-		withIndexDo: [ :aColumn :anIndex | view column: (aColumn at: #title) text: [ :item | item at: anIndex ] ]
+	(self rawData attributeAt: #columns) asList
+		withIndexDo: [ :aColumn :anIndex | view column: (aColumn attributeAt: #title) text: [ :item | item asList at: anIndex ] ]
 ]
 
 { #category : #'as yet unclassified' }

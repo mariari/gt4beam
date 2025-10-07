@@ -52,6 +52,12 @@ BeamProxyObject >> attributes [
 		evaluateAndWait: 'GtBridge.ObjectRegistry.list_attributes(' , self elixirVar asString , ')'
 ]
 
+{ #category : #'as yet unclassified' }
+BeamProxyObject >> attributesAndValues [
+	^ self attributes asList
+		collect: [ :anItem | anItem -> (self attributeAt: anItem) ]
+]
+
 { #category : #accessing }
 BeamProxyObject >> elixirClass [
 	^ elixirClass
@@ -82,24 +88,18 @@ BeamProxyObject >> evaluateAndWait: string [
 { #category : #'as yet unclassified' }
 BeamProxyObject >> gtElixirRawFor: aView [
 	<gtView>
-	^ aView columnedList
+	^ aView columnedTree
 		title: 'Elixir raw';
 		priority: 99;
-		items: [ self attributes asList ];
-		column: 'Variable' text: #yourself;
-		column: 'Value' text: [ :aName | self attributeAt: aName ];
-		send: [ :aName | self attributeAt: aName ];
+		items: [ self attributesAndValues ];
+		children: [ :anItem | 
+			(anItem value isKindOf: BeamProxyObject)
+				ifTrue: [ anItem value attributesAndValues ]
+				ifFalse: [ {} ] ];
+		column: 'Variable' text: #key;
+		column: 'Value' text: #value;
+		send: #value;
 		actionUpdateButton
-]
-
-{ #category : #'as yet unclassified' }
-BeamProxyObject >> gtLiveFor: aView [
-	<gtView>
-	^ aView forward
-		title: 'Live';
-		priority: 5;
-		object: [ self value ];
-		view: #gtLiveFor:
 ]
 
 { #category : #'as yet unclassified' }
@@ -107,10 +107,15 @@ BeamProxyObject >> gtRemoteViewsFor: aView [
 	"Create a composite view with all remote views"
 
 	<gtView>
+	| viewDecls |
+	viewDecls := self viewDeclarations asList.
+
+	viewDecls ifEmpty: [ ^ aView empty ].
+
 	^ aView composite
 		title: 'Remote views';
 		priority: 1;
-		views: (self viewDeclarations asList collect: [ :decl | self viewFromDeclaration: decl ])
+		views: (viewDecls collect: [ :decl | self viewFromDeclaration: decl ])
 ]
 
 { #category : #'as yet unclassified' }
@@ -123,6 +128,13 @@ BeamProxyObject >> itemAt: idx [
 BeamProxyObject >> length [
 	^ self
 		evaluateAndWait: 'GtBridge.ObjectRegistry.get_length(' , self elixirVar asString , ')'
+]
+
+{ #category : #'as yet unclassified' }
+BeamProxyObject >> printOn: str [
+	str 
+		<< (elixirClass asString first isVowel ifTrue: ['an '] ifFalse: ['a ']);
+		<< elixirClass asString
 ]
 
 { #category : #accessing }
