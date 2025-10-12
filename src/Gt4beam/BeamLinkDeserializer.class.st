@@ -22,13 +22,16 @@ BeamLinkDeserializer >> buildProxyFor: rawObject [
 
 { #category : #'as yet unclassified' }
 BeamLinkDeserializer >> privateDeserialize: rawObj [
+
 	rawObj isCollection ifFalse: [ ^ rawObj ].
-	rawObj isDictionary and: [ (rawObj includesKey: #exid) 
-		ifTrue: [ ^ self reifyProxyFor: rawObj ] ].
+	rawObj isDictionary
+		and: [ (rawObj includesKey: #exid) ifTrue: [ ^ self reifyProxyFor: rawObj ] ].
 	^ rawObj collect: [ :elem | self privateDeserialize: elem ]
 ]
 
 { #category : #'as yet unclassified' }
 BeamLinkDeserializer >> reifyProxyFor: rawObj [
-	^ self objectRegistry resolve: (rawObj at: #exid) ifAbsent: [ self buildProxyFor: rawObj ]
+	^ self objectRegistry
+		resolve: (rawObj at: #exid)
+		ifAbsent: [ self buildProxyFor: rawObj ]
 ]
