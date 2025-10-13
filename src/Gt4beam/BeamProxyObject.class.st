@@ -152,7 +152,7 @@ BeamProxyObject >> rawData: anObject [
 { #category : #'as yet unclassified' }
 BeamProxyObject >> viewDeclarations [
 	^ self
-		evaluateAndWait: 'GtBridge.GtViewedObject.getViewsDeclarationsById(' , self elixirVar asString
+		evaluateAndWait: 'GtBridge.GtViewedObject.get_views_declarations_by_id(' , self elixirVar asString
 				, ')'
 ]
 
