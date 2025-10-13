@@ -68,6 +68,14 @@ GtElixirCoderModel >> initializeAddOns: addOns [
 
 	elixirLinkApplicationStrategy
 		ifNotNil: [ addOns
+				addMainAction: 'Inspect' translated
+				icon: BrGlamorousVectorIcons playinspect
+				action: [ :aCoderUIModel :anElement | 
+					GtCoderCodeExecutor doItAndGo
+						coderViewModel: aCoderUIModel;
+						element: anElement;
+						execute.
+			addOns
 				addMainAction: 'Evaluate' translated
 				icon: BrGlamorousVectorIcons play
 				action: [ :aCoderUIModel :anElement | 
@@ -75,15 +83,7 @@ GtElixirCoderModel >> initializeAddOns: addOns [
 						coderViewModel: aCoderUIModel;
 						element: anElement;
 						execute ]
-				id: GtSourceCoderDoItActionId.
-			addOns
-				addMainAction: 'Inspect' translated
-				icon: BrGlamorousVectorIcons playinspect
-				action: [ :aCoderUIModel :anElement | 
-					GtCoderCodeExecutor doItAndGo
-						coderViewModel: aCoderUIModel;
-						element: anElement;
-						execute ]
+				id: GtSourceCoderDoItActionId ]
 				id: GtSourceCoderDoItAndGoActionId ]
 ]
 
