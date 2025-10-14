@@ -10,7 +10,7 @@ BeamLinkApplication class >> connectwithServerPort: server clientPort: cleint [
 		startWith: (LanguageLinkSettings new
 				clientSocketAddress: (LanguageLinkSocketAddress ipOrName: 'localhost' port: cleint);
 				serverSocketAddress: (LanguageLinkSocketAddress ipOrName: 'localhost' port: server);
-				messageBrokerStrategy: LanguageLinkHttpMessageBroker;
+				messageBrokerStrategy: BeamLinkHttpMessageBroker;
 				serverProcessClass: BeamLinkBeamProcess;
 				platform: BeamPlatform new;
 				commandFactoryClass: BeamLinkCommandFactory;

@@ -20,3 +20,18 @@ ElixirExecutionHandler >> initializeHandler [
 		addHandler: [ :msg | self notifyCallbackHandler: msg ]
 			forMessageClass: LanguageLinkCallbackMessage
 ]
+
+{ #category : #'as yet unclassified' }
+ElixirExecutionHandler >> registerObject: aProxyObject [
+	"Don't register the object. Gets a new proxy every time"
+	weakRegistry 
+		registerObject: aProxyObject 
+		finalizer: (LanguageLinkRegistryFinalizer 
+							variable: aProxyObject elixirVar
+							executionHandler: self)
+]
+
+{ #category : #'as yet unclassified' }
+ElixirExecutionHandler >> removeId: aRemoteProxyId [
+	^ 'Eval.remove(' , aRemoteProxyId asString , ')'
+]

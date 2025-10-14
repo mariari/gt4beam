@@ -120,7 +120,6 @@ GtElixirCoderModel >> primitiveEvaluate: aSourceString inContext: aGtSourceCoder
 { #category : #accessing }
 GtElixirCoderModel >> sourceFrom: trimmedSourceString returnedVarNames: varNames [
 	"Answer the modified source to return the declared variables"
-
 	^ String
 		streamContents: [ :stream | 
 			stream << trimmedSourceString ]
