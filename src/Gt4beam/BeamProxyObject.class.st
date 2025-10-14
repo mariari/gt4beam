@@ -120,16 +120,12 @@ BeamProxyObject >> gtRemoteViewsFor: aView [
 
 { #category : #'as yet unclassified' }
 BeamProxyObject >> itemAt: idx [
-	^ self
-		evaluateAndWait: 'GtBridge.ObjectRegistry.resolve(' , self elixirVar asString, ')
-		|> Enum.at(' , idx asString , ')'
+	^ self evaluateAndWait: self resolve , '|> Enum.at(' , idx asString , ')'
 ]
 
 { #category : #'as yet unclassified' }
 BeamProxyObject >> length [
-	^ self
-		evaluateAndWait: 'GtBridge.ObjectRegistry.resolve(' , self elixirVar asString, ') 
-		|> length()'
+	^ self evaluateAndWait: self resolve , '|> length()'
 ]
 
 { #category : #'as yet unclassified' }
@@ -147,6 +143,11 @@ BeamProxyObject >> rawData [
 { #category : #accessing }
 BeamProxyObject >> rawData: anObject [
 	rawData := anObject
+]
+
+{ #category : #'as yet unclassified' }
+BeamProxyObject >> resolve [
+	^ 'GtBridge.ObjectRegistry.resolve(' , self elixirVar asString , ')'
 ]
 
 { #category : #'as yet unclassified' }
