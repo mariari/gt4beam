@@ -66,88 +66,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-06-01T00:29:47.447546+08:00"
+						"dateAndTimeString" : "2025-10-16T15:28:09.328079-05:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "Xu0ZJrzyDQCHF1wzDJEgGA=="
 				},
-				"code" : ".\"Hello \" <> \"beam!\""
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-05-31T18:21:49.833663+08:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-05-31T18:22:02.498686+08:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "OIhnos3yDQCGAMV1BuwRPA=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "Outside of snippits values can be evaluated easily as well"
-			},
-			{
-				"__type" : "stringSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-05-31T18:22:25.216321+08:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-05-31T18:22:36.243443+08:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "biTapM3yDQCH8YpJBuwRPA=="
-				},
-				"code" : "[123, \"hello\", %{key: \"world\"}]",
-				"contentString" : "[123, \"hello\", %{key: \"world\"}]",
-				"bindingName" : "world",
-				"format" : "ElixirParser"
+				"code" : "\"Hello \" <> \"beam!\""
 			},
 			{
 				"__type" : "pharoSnippet",

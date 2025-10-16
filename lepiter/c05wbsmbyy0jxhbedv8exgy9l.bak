@@ -1,0 +1,509 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-16T15:59:39.647641-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-16T16:01:37.37641-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "swbnoa79DQCMtaLWCXPFyg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "We can add views to objects from our Elixir code."
+			},
+			{
+				"__type" : "elixirSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-16T16:01:42.125625-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-16T16:11:02.80724-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "TuQzqa79DQCQyIXGCXPFyg=="
+				},
+				"code" : "defmodule Person do\n  use TypedStruct\n  use GtBridge.View\n\n  alias GtBridge.Phlow.List\n  alias GtBridge.Phlow.Text\n\n  typedstruct do\n    field(:name, String.t(), default: \"\")\n    field(:hobbies, list(String.t()), default: [])\n  end\n\n  def new(name, hobbies \\\\ []) do\n    %__MODULE__{name: name, hobbies: hobbies}\n  end\n\n  defview hobbies_view(self, builder) do\n    builder.list()\n    |> List.title(\"Hobbies\")\n    |> List.priority(2)\n    |> List.items(self.hobbies)\n  end\nend\n\rPerson.new(\"Alice\", [\"reading\", \"hiking\", \"coding\"])"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-16T16:08:58.396535-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-16T16:09:21.924251-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "yts0w679DQCSqwhyCXPFyg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "This will create a new struct and create a view for it using `defview`."
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-16T16:09:29.573787-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-16T16:09:41.247098-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "gJIQxa79DQCUnQxUCXPFyg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Currently, the following view types are supported:"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "elixirSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-16T16:10:36.984101-05:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-16T16:11:29.984335-05:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "dC8Vya79DQCWtQeMCXPFyg=="
+							},
+							"code" : "defmodule Person do\n defview hobbies_view(self, builder) do\n    builder.list()\n    |> List.title(\"Hobbies\")\n    |> List.priority(2)\n    |> List.items(self.hobbies)\n  end\nend"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-16T16:09:53.027043-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-16T16:09:55.276161-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "v3LLxa79DQCVxEjACXPFyg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "### Lists"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "elixirSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-16T16:12:05.576985-05:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-16T16:14:40.631151-05:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "PwFdzq79DQCXtO/qCXPFyg=="
+							},
+							"code" : "defmodule Person do\n defview hobbies_view(self, builder) do\n    builder.list()\n    |> ColumnedList.title(\"Hobbies\")\n    |> ColumnedList.priority(2)\n    |> ColumnedList.items(self.hobbies)\n    |> ColumnedList.column(\"Hobby\", fn m -> m end)\n  end\nend"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-16T16:11:41.152475-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-16T16:11:49.881873-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "EFHozK79DQCXWLkkCXPFyg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "### Columned Lists"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "elixirSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-16T16:12:53.457046-05:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-16T16:13:36.238396-05:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "ypg30a79DQCYHElfCXPFyg=="
+							},
+							"code" : "defmodule Person do\r  defview name(self, builder) do\n    builder.text()\n    |> Text.title(\"Name\")\n    |> Text.priority(3)\n    |> Text.string(self.name)\n  end\rend"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-16T16:12:43.725374-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-16T16:12:49.524056-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "Zhqj0K79DQCXyiwoCXPFyg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "### Text editors"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-16T16:15:05.217618-05:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-16T16:15:35.54672-05:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "dxoS2a79DQCbJKzDCXPFyg=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : "**Note:** *these require a more complex object structure, so we are switching the example structure a bit.*"
+						}
+					]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-16T16:14:48.927166-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-16T16:14:57.704028-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "+IcZ2K79DQCaxtboCXPFyg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "### Columned Trees"
+			},
+			{
+				"__type" : "elixirSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-16T16:15:01.766677-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-16T16:17:54.74332-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "RnLd2K79DQCbIvLKCXPFyg=="
+				},
+				"code" : "defmodule Team do\n  use TypedStruct\n  use GtBridge.View\n\n  alias GtBridge.Phlow.{ColumnedTree}\n\n  typedstruct do\n    field(:name, String.t(), default: \"\")\n    field(:members, list(map()), default: [])\n  end\n\n  def new(name, members, projects) do\n    %__MODULE__{name: name, members: members}\n  end\n\n  defview hierarchy_view(self, builder) do\n    tree_data = [\n      %{name: self.name, level: \"Team\", items: self.members}\n    ]\n\n    builder.columned_tree()\n    |> ColumnedTree.title(\"Hierarchy\")\n    |> ColumnedTree.priority(4)\n    |> ColumnedTree.items(tree_data)\n    |> ColumnedTree.column(\"Name\", fn item -> item.name end)\n    |> ColumnedTree.column(\"Level\", fn item -> item[:level] || \"Member\" end)\n    |> ColumnedTree.children(fn item -> item[:items] || [] end)\n  end\nend\r\r team = Team.new(\n    \"Engineering\",\n    [\n      %{name: \"Alice\", role: \"Lead\"},\n      %{name: \"Bob\", role: \"Developer\"},\n      %{name: \"Carol\", role: \"Designer\"}\n    ]\n  )"
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-10-16T15:59:39.583318-05:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-10-16T15:59:39.583318-05:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Adding views to Elixir objects"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "790ae6a1-aefd-0d00-8cb4-6eb60973c5ca"
+	}
+}

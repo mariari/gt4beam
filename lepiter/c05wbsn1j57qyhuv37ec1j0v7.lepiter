@@ -1,0 +1,218 @@
+{
+	"__schema" : "4.1",
+	"__type" : "page",
+	"children" : {
+		"__type" : "snippets",
+		"items" : [
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-16T15:29:15.571639-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-16T15:31:09.353564-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "6dUtNa79DQCvnZPRCXPFyg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Executing an Elixir snippet should start a server automatically and should be accessible by executing the snippet below."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-16T15:30:42.354934-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-16T15:30:56.220018-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "NAtaOq79DQCzgiK0CXPFyg=="
+				},
+				"code" : "BeamLinkApplication uniqueInstance"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-16T15:31:11.970456-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-16T15:31:19.269994-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "2PAdPK79DQC1HiC3CXPFyg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : " If you need to initialize your own application or customize the current instance, you can do so."
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-16T15:31:49.171745-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-16T15:56:41.29187-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "bpZVPq79DQC1bVtkCXPFyg=="
+				},
+				"code" : "BeamLinkApplication resetUniqueInstance\r\tstartWith: (LanguageLinkSettings new\r\t\t\tclientSocketAddress: (LanguageLinkSocketAddress ipOrName: 'localhost' port: 8081);\r\t\t\tserverSocketAddress: (LanguageLinkSocketAddress ipOrName: 'localhost' port: 8080);\r\t\t\tmessageBrokerStrategy: LanguageLinkHttpMessageBroker;\r\t\t\tserverProcessClass: BeamLinkBeamProcess;\r\t\t\tplatform: BeamPlatform new;\r\t\t\tcommandFactoryClass: BeamLinkCommandFactory;\r\t\t\tcommandClass: ElixirLinkCommand;\r\t\t\tserializerClass: LanguageLinkSerializer;\r\t\t\tdeserializerClass: BeamLinkDeserializer;\r\t\t\tparserClass: ElixirParser;\r\t\t\tyourself)"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-16T15:48:42.287894-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-16T15:50:29.449874-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "ZoO4eq79DQC2tbW8CXPFyg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "This will override the current application. You can use this to customize the ports the server and client run on as well as allow you to change out any parts, including such fundamental things as the parser or serializer. This should never be necessary, but might be interesting if you are working on the bridge itself."
+			}
+		]
+	},
+	"createEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"createTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-10-16T15:29:15.483358-05:00"
+		}
+	},
+	"editEmail" : {
+		"__type" : "email",
+		"emailString" : "<unknown>"
+	},
+	"editTime" : {
+		"__type" : "time",
+		"time" : {
+			"__type" : "dateAndTime",
+			"dateAndTimeString" : "2025-10-16T15:54:17.345342-05:00"
+		}
+	},
+	"pageType" : {
+		"__type" : "namedPage",
+		"title" : "Modifying the language server"
+	},
+	"uid" : {
+		"__type" : "uuid",
+		"uuid" : "237c2c35-aefd-0d00-af9c-18ce0973c5ca"
+	}
+}
