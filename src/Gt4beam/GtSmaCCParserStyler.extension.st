@@ -3,12 +3,32 @@ Extension { #name : #GtSmaCCParserStyler }
 { #category : #'*Gt4beam' }
 GtSmaCCParserStyler class >> elixirStyler: aParserClass [
 	<smaccStyler: #ElixirParser priority: 50>
-	^ (self forParser: aParserClass)
-		stylerRules: {GtSmaCCKeywordTokensStylerRule
+	| specialNodes |
+	specialNodes := {'defmodule'.
+			'def'.
+			'defview'.
+			'use'.
+			'alias'.
+			'typedstruct'.
+			'do'.
+			'end'}
+			collect: [ :aToken | 
+				GtSmaCCTokenValueStylerRule
+					tokenName: aToken
 					styleBlock: [ :styler | 
 						styler
 							bold;
-							foreground: Color purple ].
+							foreground: Color purple ] ].
+	^ (self forParser: aParserClass)
+		stylerRules: {GtSmaCCNodeStylerRule
+					nodeClassName: #ElixirTrueNode
+					styleBlock: [ :styler :node :text | (text from: node startPosition to: node stopPosition) foreground: Color orange ].
+				GtSmaCCNodeStylerRule
+					nodeClassName: #ElixirNilNode
+					styleBlock: [ :styler :node :text | (text from: node startPosition to: node stopPosition) foreground: Color orange ].
+				GtSmaCCNodeStylerRule
+					nodeClassName: #ElixirFalseNode
+					styleBlock: [ :styler :node :text | (text from: node startPosition to: node stopPosition) foreground: Color orange ].
 				GtSmaCCCommentStylerRule
 					styleBlock: [ :styler | styler foreground: Color lightGray ].
 				GtSmaCCNodeStylerRule
@@ -20,39 +40,43 @@ GtSmaCCParserStyler class >> elixirStyler: aParserClass [
 				GtSmaCCNodeStylerRule
 					nodeClassName: #ElixirListNode
 					styleBlock: [ :styler :node :text | 
-						CarpStylerUtilities
+						BeamStylerUtilities
 							colorAndHighlightParenthesesLeft: node startPosition
 							right: node stopPosition
 							atNestingLevel: node listDepth
-							inText: text ].
+							inText: text
+							leftLength: 0 ].
 				GtSmaCCNodeStylerRule
 					nodeClassName: #ElixirMapNode
 					styleBlock: [ :styler :node :text | 
-						CarpStylerUtilities
+						BeamStylerUtilities
 							colorAndHighlightParenthesesLeft: node startPosition
 							right: node stopPosition
 							atNestingLevel: node listDepth
-							inText: text ].
+							inText: text
+							leftLength: 1
+									+ (node struct ifNil: [ 0 ] ifNotNil: [ :aStruct | aStruct source size ]) ].
 				GtSmaCCNodeStylerRule
 					nodeClassName: #ElixirAtomNode
 					styleBlock: [ :styler | styler italic ].
 				GtSmaCCNodeStylerRule
-					nodeClassName: #ElixirDoNode
+					nodeClassName: #ElixirBlockExprNode
 					styleBlock: [ :styler :node :text | 
-						(text from: node module startPosition to: node module stopPosition)
-							foreground: Color orange ].
+						(text
+							from: node call expressions first identifier startPosition
+							to: node call expressions first identifier stopPosition) italic bold ].
 				GtSmaCCNodeStylerRule
-					nodeClassName: #ElixirTrueNode
-					styleBlock: [ :styler :node :text | 
-						(text from: node module startPosition to: node module stopPosition)
-							foreground: Color orange ].
+					nodeClassName: #ElixirDotAliasNode
+					styleBlock: [ :styler | styler bold ].
 				GtSmaCCNodeStylerRule
-					nodeClassName: #ElixirFalseNode
+					nodeClassName: #ElixirDoBlockNode
 					styleBlock: [ :styler :node :text | 
-						(text from: node module startPosition to: node module stopPosition)
-							foreground: Color orange ].
+						BeamStylerUtilities
+							highlightParenthesesLeft: node startPosition
+							right: node stopPosition
+							inText: text ].
 				GtSmaCCNodeVariableStylerRule
 					nodeClassName: #SmaCCErrorNode
 					variableNames: #(dismissedTokens errorToken)
-					styleBlock: [ :styler | styler foreground: Color red ]}
+					styleBlock: [ :styler | styler foreground: Color red ]} , specialNodes
 ]
