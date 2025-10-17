@@ -119,6 +119,17 @@ BeamProxyObject >> gtRemoteViewsFor: aView [
 ]
 
 { #category : #'as yet unclassified' }
+BeamProxyObject >> gtSourceFor: aView [
+	<gtView>
+	^ aView textEditor
+		title: 'Source';
+		priority: 110;
+		text: [ self source ];
+		aptitude: BrGlamorousCodeEditorAptitude;
+		styler: ElixirParser gtStyler
+]
+
+{ #category : #'as yet unclassified' }
 BeamProxyObject >> itemAt: idx [
 	^ self evaluateAndWait: self resolve , '|> Enum.at(' , idx asString , ')'
 ]
@@ -148,6 +159,22 @@ BeamProxyObject >> rawData: anObject [
 { #category : #'as yet unclassified' }
 BeamProxyObject >> resolve [
 	^ 'GtBridge.ObjectRegistry.resolve(' , self elixirVar asString , ')'
+]
+
+{ #category : #'as yet unclassified' }
+BeamProxyObject >> source [
+	| file |
+	file := self sourceFile asFileReference.
+
+	file exists ifTrue: [ ^ file contents ].
+
+	^ nil
+]
+
+{ #category : #'as yet unclassified' }
+BeamProxyObject >> sourceFile [
+	^ self
+		evaluateAndWait: 'List.to_string(' , self resolve , '.__struct__.module_info(:compile)[:source])'
 ]
 
 { #category : #'as yet unclassified' }
