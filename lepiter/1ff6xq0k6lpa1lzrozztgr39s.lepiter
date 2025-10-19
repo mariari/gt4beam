@@ -74,6 +74,43 @@
 					"uidString" : "Xu0ZJrzyDQCHF1wzDJEgGA=="
 				},
 				"code" : "\"Hello \" <> \"beam!\""
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-19T15:51:41.398738+08:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2025-10-19T15:51:54.547232+08:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "8lJs+d/9DQCliKREDljXQQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "See [[Connecting To An Existing Elixir Codebase]] for how to setup gt4beam for your application."
 			}
 		]
 	},

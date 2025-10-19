@@ -146,7 +146,7 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2025-10-16T17:03:54.604413-05:00"
+									"dateAndTimeString" : "2025-10-16T17:09:04.606107-05:00"
 								}
 							},
 							"uid" : {
@@ -156,7 +156,7 @@
 							"paragraphStyle" : {
 								"__type" : "textStyle"
 							},
-							"string" : "[[Visualizing Elixir code]]"
+							"string" : "[[Visualizing the bridge code]]"
 						},
 						{
 							"__type" : "textSnippet",
@@ -194,6 +194,43 @@
 								"__type" : "textStyle"
 							},
 							"string" : "[[Modifying the language server]]"
+						},
+						{
+							"__type" : "textSnippet",
+							"children" : {
+								"__type" : "snippets",
+								"items" : [ ]
+							},
+							"createEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"createTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-19T15:50:38.261319+08:00"
+								}
+							},
+							"editEmail" : {
+								"__type" : "email",
+								"emailString" : "<unknown>"
+							},
+							"editTime" : {
+								"__type" : "time",
+								"time" : {
+									"__type" : "dateAndTime",
+									"dateAndTimeString" : "2025-10-19T15:50:38.261319+08:00"
+								}
+							},
+							"uid" : {
+								"__type" : "uid",
+								"uidString" : "SOmo9d/9DQClG/qBDljXQQ=="
+							},
+							"paragraphStyle" : {
+								"__type" : "textStyle"
+							},
+							"string" : ""
 						}
 					]
 				},

@@ -74,40 +74,6 @@
 					"uidString" : "Xu0ZJrzyDQCHF1wzDJEgGA=="
 				},
 				"code" : "\"Hello \" <> \"beam!\""
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-05-31T18:22:45.130287+08:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-05-31T18:22:56.329386+08:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "pAEKps3yDQCIOG1JBuwRPA=="
-				},
-				"code" : "BeamLinkApplication uniqueInstance newCommandFactory evaluateSourceSequence: world"
 			}
 		]
 	},
