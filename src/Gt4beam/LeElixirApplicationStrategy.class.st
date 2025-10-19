@@ -12,7 +12,9 @@ LeElixirApplicationStrategy class >> strategyName [
 
 { #category : #accessing }
 LeElixirApplicationStrategy >> applicationServer [
-
+	BeamLinkApplication isRunning
+		ifFalse: [ BeamLinkApplication uniqueInstance
+				ifNil: [ BeamLinkApplication uniqueInstance: self newApplication ] ].
 	^ BeamLinkApplication uniqueInstance
 ]
 
@@ -25,4 +27,26 @@ LeElixirApplicationStrategy >> applicationSettings [
 		[ BeamLinkApplication uniqueInstance settings ]
 	ifFalse:
 		[ BeamLinkApplication defaultSettings ]
+]
+
+{ #category : #accessing }
+LeElixirApplicationStrategy >> newApplication [
+	^ BeamLinkApplication start
+]
+
+{ #category : #accessing }
+LeElixirApplicationStrategy >> updatedSettings: applicationSettings [
+	"Update the supplied settings with the lepiter configuration"
+	| lepiterSettings lepiterDatabase pbDir |
+
+	lepiterDatabase := content database.
+	lepiterSettings := lepiterDatabase properties pythonBridgeSettings.
+	lepiterSettings directory ifNotNil:
+		[ :relativeDir | 
+			pbDir := lepiterDatabase localStoreRootDirectory resolve: relativeDir.
+			applicationSettings workingDirectory: pbDir ].
+	lepiterSettings pipenvPath ifNotNil:
+		[ :pipenvPath | applicationSettings pipenvPath: pipenvPath ].
+	applicationSettings serverDebugMode: lepiterSettings serverDebugMode.
+	^ applicationSettings
 ]

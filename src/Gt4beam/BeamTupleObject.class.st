@@ -18,3 +18,13 @@ BeamTupleObject >> asElixirList [
 BeamTupleObject >> attributesAndValues [
 	^ self asElixirList attributesAndValues
 ]
+
+{ #category : #'as yet unclassified' }
+BeamTupleObject >> itemAt: idx [
+	^ self evaluateAndWait: self resolve , '|> elem(' , idx asString , ')'
+]
+
+{ #category : #'as yet unclassified' }
+BeamTupleObject >> length [
+	^ self evaluateAndWait: self resolve , '|> tuple_size()'
+]
