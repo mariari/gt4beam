@@ -33,5 +33,5 @@ ElixirExecutionHandler >> registerObject: aProxyObject [
 
 { #category : #'as yet unclassified' }
 ElixirExecutionHandler >> removeId: aRemoteProxyId [
-	^ 'Eval.remove(' , aRemoteProxyId asString , ')'
+	^ 'GtBridge.Eval.remove(' , aRemoteProxyId asString , ')'
 ]

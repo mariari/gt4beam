@@ -12,6 +12,6 @@ BeamLinkCommandFactory >> setNotifyToInstruction: anInstruction [
 	parsed := ElixirParser parse: trimmedSource.
 	last := parsed expressions expressions last.
 	trimmedSource insert: ', command_id, port)' at: last stopPosition + 1.
-	trimmedSource insert: 'Eval.notify(' at: last startPosition.
+	trimmedSource insert: 'GtBridge.Eval.notify(' at: last startPosition.
 	^ trimmedSource asString
 ]
