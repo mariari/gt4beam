@@ -141,9 +141,7 @@ BeamProxyObject >> length [
 
 { #category : #'as yet unclassified' }
 BeamProxyObject >> printOn: str [
-	str 
-		<< (elixirClass asString first isVowel ifTrue: ['an '] ifFalse: ['a ']);
-		<< elixirClass asString
+	str << (self evaluateAndWait: self resolve , '|> inspect()')
 ]
 
 { #category : #accessing }
