@@ -129,6 +129,11 @@ BeamProxyObject >> gtSourceFor: aView [
 		styler: ElixirParser gtStyler
 ]
 
+{ #category : #predicates }
+BeamProxyObject >> isError [
+	^ false
+]
+
 { #category : #'as yet unclassified' }
 BeamProxyObject >> itemAt: idx [
 	^ self evaluateAndWait: self resolve , '|> Enum.at(' , idx asString , ')'
