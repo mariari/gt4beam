@@ -4,14 +4,7 @@ Extension { #name : #GtSmaCCParserStyler }
 GtSmaCCParserStyler class >> elixirStyler: aParserClass [
 	<smaccStyler: #ElixirParser priority: 50>
 	| specialNodes |
-	specialNodes := {'defmodule'.
-			'def'.
-			'defview'.
-			'use'.
-			'alias'.
-			'typedstruct'.
-			'do'.
-			'end'}
+	specialNodes := BeamStylerUtilities keywords
 			collect: [ :aToken | 
 				GtSmaCCTokenValueStylerRule
 					tokenName: aToken

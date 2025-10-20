@@ -62,6 +62,21 @@ BeamStylerUtilities class >> highlightParenthesesLeft: aLeftIndex right: aRightI
 ]
 
 { #category : #'*Gt4beam' }
+BeamStylerUtilities class >> keywords [
+	^ {'defmodule'.
+		'def'.
+		'defview'.
+		'defmacro'.
+		'defp'.
+		'defexample'.
+		'use'.
+		'alias'.
+		'typedstruct'.
+		'do'.
+		'end'}
+]
+
+{ #category : #'*Gt4beam' }
 BeamStylerUtilities class >> parenthesesColorAt: anIndex [
 	| colors |
 	colors := self parenthesesColors.
