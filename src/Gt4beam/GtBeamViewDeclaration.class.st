@@ -11,7 +11,7 @@ Class {
 GtBeamViewDeclaration class >> fromRawData: aData [
 	self
 		allSubclassesDo: [ :aSubclass | 
-			aSubclass remoteName = (aData attributeAt: #viewName)
+			aSubclass remoteName = (aData attributeAt: (BeamAtomObject new: #viewName))
 				ifTrue: [ ^ aSubclass new rawData: aData ] ].
 
 	^ self error: 'Unknown view'
@@ -26,13 +26,13 @@ GtBeamViewDeclaration class >> remoteName [
 GtBeamViewDeclaration >> asView [
 	| view |
 	view := GtPhlowView empty perform: self viewName.
-	
+
 	view
-				title: (self rawData attributeAt: #title);
-				priority: (self rawData attributeAt: #priority).
-				
+		title: (self rawData attributeAt: (BeamAtomObject new: #title));
+		priority: (self rawData attributeAt:  (BeamAtomObject new: #priority)).
+
 	self treatView: view.
-	
+
 	^ view
 ]
 

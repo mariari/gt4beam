@@ -22,7 +22,8 @@ ElixirLinkNeoJsonSerializer >> handleElixirSpecificData: anObject [
 	Need to handle __pid__ as well"
 
 	anObject isArray
-		ifTrue: [ (anObject at: 1) = '__atom__' ifTrue: [ ^ (anObject at: 2) asSymbol ].
+		ifTrue: [ (anObject at: 1) = '__atom__'
+				ifTrue: [ ^ BeamAtomObject new: (anObject at: 2) asSymbol ].
 			(anObject at: 1) = '__base64__'
 				ifTrue: [ ^ ZnBase64Encoder new decode: (anObject at: 2) ] ].
 	^ anObject
