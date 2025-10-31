@@ -25,6 +25,14 @@ BeamProxyObject class >> elixirClass: aClass [
 	^ proxyClass new elixirClass: aClass
 ]
 
+{ #category : #'as yet unclassified' }
+BeamProxyObject >> = AnotherObject [
+	^ super = AnotherObject
+		ifFalse: [ self class = AnotherObject class
+				and: [ self asString = AnotherObject asString ] ]
+		ifTrue: [ true ]
+]
+
 { #category : #accessing }
 BeamProxyObject >> application [
 	^ application
@@ -127,6 +135,11 @@ BeamProxyObject >> gtSourceFor: aView [
 		text: [ self source ];
 		aptitude: BrGlamorousCodeEditorAptitude;
 		styler: ElixirParser gtStyler
+]
+
+{ #category : #comparing }
+BeamProxyObject >> hash [
+	^ self class hash hashMultiply bitXor: self asString hash hashMultiply
 ]
 
 { #category : #predicates }
