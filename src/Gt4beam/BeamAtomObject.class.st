@@ -20,6 +20,32 @@ BeamAtomObject >> = aSymbol [
 	^ self symbol = aSymbol symbol
 ]
 
+{ #category : #'as yet unclassified' }
+BeamAtomObject >> determinePID [
+	^ self evaluateAndWait: (self resolve , '|> Process.whereis()')
+]
+
+{ #category : #'as yet unclassified' }
+BeamAtomObject >> evaluateAndWait: aString [
+	"I'm unsure how this works when we have multiple beam instances... Since this isn't related to any personal data"
+
+	^ BeamLinkApplication uniqueInstance newCommandFactory
+		<< aString;
+		sendAndWait
+]
+
+{ #category : #views }
+BeamAtomObject >> gtPIDView: aView [
+	<gtView>
+	| pid |
+	pid := self determinePID.
+	pid ifNil: [ ^ aView empty ].
+	^ aView composite
+		title: 'PID View';
+		priority: 2;
+		views: pid gtViewsInCurrentContext
+]
+
 { #category : #comparing }
 BeamAtomObject >> hash [
 	^ self symbol hash hashMultiply
