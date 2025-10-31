@@ -11,7 +11,7 @@ GtBeamTextEditorViewDeclaration class >> remoteName [
 
 { #category : #'as yet unclassified' }
 GtBeamTextEditorViewDeclaration >> treatView: view [
-view  text: [ self rawData attributeAt: #string ]
+	view text: [ self rawData attributeAt: (BeamAtomObject new: #string) ]
 ]
 
 { #category : #'as yet unclassified' }

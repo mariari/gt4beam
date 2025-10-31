@@ -43,7 +43,7 @@ BeamProxyObject >> asList [
 { #category : #'as yet unclassified' }
 BeamProxyObject >> attributeAt: name [
 	^ self
-		evaluateAndWait: 'GtBridge.ObjectRegistry.get_attribute(' , self elixirVar asString , ', :', name, ')'
+		evaluateAndWait: 'GtBridge.ObjectRegistry.get_attribute(' , self elixirVar asString , ',', name resolve, ')'
 ]
 
 { #category : #'as yet unclassified' }
