@@ -146,7 +146,7 @@ BeamProxyObject >> length [
 
 { #category : #'as yet unclassified' }
 BeamProxyObject >> printOn: str [
-	str << (self evaluateAndWait: self resolve , '|> inspect()')
+	str << (self evaluateAndWait: self resolve , '|> inspect(pretty: true)')
 ]
 
 { #category : #accessing }
